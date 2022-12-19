@@ -299,7 +299,6 @@
 
 # enter should not create checkbox if current item contains checkbox but cursor inside checkbox
 
-- setting: `stickCursor=false`
 - applyState:
 
 ```md

@@ -12,48 +12,6 @@
 - |one
 ```
 
-# cursor should be moved to list content with an unchecked checkbox
-
-- applyState:
-
-```md
-|- [ ] one
-```
-
-- assertState:
-
-```md
-- [ ] |one
-```
-
-# cursor should be moved to list content with a checked checkbox
-
-- applyState:
-
-```md
-|- [x] one
-```
-
-- assertState:
-
-```md
-- [x] |one
-```
-
-# cursor should be moved to list content with a custom checkbox
-
-- applyState:
-
-```md
-- |[!] one
-```
-
-- assertState:
-
-```md
-- [!] |one
-```
-
 # cursor should not be moved to list content if stickCursor=false
 
 - setting: `stickCursor=false`
@@ -103,7 +61,7 @@
 - |two
 ```
 
-# cursor should be moved to previous line after arrowleft
+# cursor should be moved to previous line
 
 - applyState:
 

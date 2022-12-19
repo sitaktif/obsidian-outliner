@@ -36,7 +36,6 @@ export class List {
     private root: Root,
     private indent: string,
     private bullet: string,
-    private checkboxLength: number,
     private spaceAfterBullet: string,
     firstLine: string,
     private foldRoot: boolean
@@ -212,10 +211,6 @@ export class List {
     return this.spaceAfterBullet;
   }
 
-  getCheckboxLength() {
-    return this.checkboxLength;
-  }
-
   replateBullet(bullet: string) {
     this.bullet = bullet;
   }
@@ -287,7 +282,7 @@ export class List {
 }
 
 export class Root {
-  private rootList = new List(this, "", "", 0, "", "", false);
+  private rootList = new List(this, "", "", "", "", false);
   private selections: Range[] = [];
 
   constructor(

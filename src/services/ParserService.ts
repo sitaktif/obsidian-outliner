@@ -2,14 +2,11 @@ import { List, Root } from "../root";
 import { LoggerService } from "../services/LoggerService";
 
 const bulletSign = `(?:[-*+]|\\d+\\.)`;
-const optionalCheckbox = `(?:\\[[^\\]]\\]\\s?)?`;
 
 const listItemWithoutSpacesRe = new RegExp(`^${bulletSign}( |\t)`);
 const listItemRe = new RegExp(`^[ \t]*${bulletSign}( |\t)`);
 const stringWithSpacesRe = new RegExp(`^[ \t]+`);
-const parseListItemRe = new RegExp(
-  `^([ \t]*)(${bulletSign})( |\t)((${optionalCheckbox}).*)$`
-);
+const parseListItemRe = new RegExp(`^([ \t]*)(${bulletSign})( |\t)(.*)$`);
 
 export interface ReaderPosition {
   line: number;
@@ -162,8 +159,7 @@ export class ParserService {
       const matches = parseListItemRe.exec(line);
 
       if (matches) {
-        const [, indent, bullet, spaceAfterBullet, content, optionalCheckbox] =
-          matches;
+        const [, indent, bullet, spaceAfterBullet, content] = matches;
 
         const compareLength = Math.min(currentIndent.length, indent.length);
         const indentSlice = indent.slice(0, compareLength);
@@ -199,7 +195,6 @@ export class ParserService {
           root,
           indent,
           bullet,
-          optionalCheckbox.length,
           spaceAfterBullet,
           content,
           foldRoot
